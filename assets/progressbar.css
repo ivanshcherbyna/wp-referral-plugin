@@ -1,0 +1,184 @@
+.softhardcap{
+
+    text-align: center;
+
+    width: 100%;
+
+    border-radius: 5px;
+
+    border-style: solid;
+
+    border-width: 1px;
+
+    border-color: #534d6d;
+
+}
+
+.softhardcap_wrap{
+
+    display: flex;
+
+    justify-content: space-between;
+
+}
+
+
+
+
+
+.progress-wrapp{
+
+    position:relative;
+
+    display:block;
+
+}
+
+.softhardcap_wrap:before{
+
+    content:'Soft cap';
+
+    margin-left: 2%
+
+}
+
+/*.softhardcap_wrap:after{
+
+    content:'';
+
+    position:absolute;
+
+    left: 14%;
+
+    top: 0;
+
+    display: block;
+
+    width: 1px;
+
+    height: 31px;
+
+    background: #534d6d;
+
+}*/
+progress.softhardcap::before {
+    content: '';
+    position: absolute;
+    left: 14%;
+    top: 0;
+    display: block;
+    width: 1px;
+    height: 31px;
+    background: #534d6d;
+}
+progress.softhardcap::after {
+    content: 'Hard cap';
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 75px;
+    height: 31px;
+    border-right: solid 1px #534d6d;
+}
+
+.Hardcap {
+
+    position:relative;
+
+    /*    border-right: solid 1px #534d6d;
+
+       margin: 0px 2px 0px 0px;
+
+       padding-right: 5px;*/
+
+    padding-right:2%;
+
+    padding-bottom: 18px;
+
+}
+
+
+
+.Hardcap::after{
+
+    /*content:'';
+
+    position:absolute;
+
+    right: 0;
+
+    top: 0;
+
+    display: block;
+
+    width: 1px;
+
+    height: 52px;
+
+    background: #534d6d;*/
+   /* content: 'Hard cap';
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 75px;
+    height: 31px;
+    border-right: solid 1px #534d6d;*/
+
+}
+
+
+
+.softhardcap::-webkit-progress-value {
+
+    background:         -webkit-linear-gradient(left, #8a8c8e, #534d6d);
+
+    border-radius: 12px;
+
+    -webkit-animation: animate-stripes 5s linear infinite;
+
+    animation: animate-stripes 5s linear infinite;
+
+}
+
+.softhardcap::-moz-progress-value {
+
+    background:
+
+            -moz-linear-gradient(left, #8a8c8e, #534d6d);
+
+    border-radius: 12px;
+
+    -moz-animation: animate-stripes 5s linear infinite;
+
+    animation: animate-stripes 5s linear infinite;
+
+}
+@media (max-width: 470px){
+	.softhardcap_wrap:before{
+		content: 'Soft cap';
+		margin-left: 0;
+	}
+}
+
+@-webkit-keyframes animate-stripes {
+
+    100% { background-position: -100px 0px; }
+
+}
+
+@-moz-keyframes animate-stripes {
+
+    100% { background-position: -100px 0px; }
+
+}
+
+
+
+@keyframes animate-stripes {
+
+    100% { background-position: -100px 0px; }
+
+}
+
