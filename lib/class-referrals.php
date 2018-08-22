@@ -7,7 +7,12 @@ class IVD_Referrals {
 
     {
         add_action('init', array($this,'IVD_set_referal_cookie'));
-        add_action('user_register',array($this,'IVD_check_reffer'));
+        //add_action('user_register',array($this,'IVD_check_reffer')); // <- use when start event put submit registration form for referral
+        // can work without plugin User Registration
+
+        add_action('user_registration_check_token_complete',array($this,'IVD_check_reffer'));  // <- or use when start event success confirm registration by email
+        // do not testet here hoock without plugin User Registration
+
         add_action('wp_ajax_IVD_save_social_inputs',array($this,'IVD_save_social_by_ajax'));
 
         self::$bonus_for_referrer=get_option( 'bonus_for_referrer' );
@@ -22,9 +27,9 @@ class IVD_Referrals {
      * @return mixed
      */
     function IVD_get_exist_user_units($user_id){
-         $old_referrer_user_units = get_user_meta( sanitize_text_field($user_id), 'units', true);
+        $old_referrer_user_units = get_user_meta($user_id, 'units', true);
         return (int) $old_referrer_user_units;
-     }
+    }
 
     /*
     * Function set cookie for referal user
@@ -110,7 +115,7 @@ class IVD_Referrals {
 
         $referr_user_id = isset($_COOKIE['my_referal']) ? $_COOKIE['my_referal'] : '';
 
-        if (get_user_by('id',$referr_user_id)){
+        if (get_user_by('id',$referr_user_id )){
             $this->IVD_update_user_meta_units($referr_user_id, $created_new_user_id);
 
             //removed cookie when user checked
@@ -135,13 +140,13 @@ class IVD_Referrals {
 
             $social_links = $_POST['links'];
 
-            $user_id=$_POST['_user_id'];
+            $user_id=sanitize_text_field ($_POST['_user_id']);
 
-            if($social_links['fb']) update_user_meta($user_id,'user_registration_facebook_account',$social_links['fb']);
+            if($social_links['fb']) update_user_meta($user_id,'user_registration_facebook_account',esc_url_raw($social_links['fb']));
 
-            if($social_links['tw']) update_user_meta($user_id,'user_registration_twitter_account',$social_links['tw']);
+            if($social_links['tw']) update_user_meta($user_id,'user_registration_twitter_account',esc_url_raw($social_links['tw']));
 
-            if($social_links['tg']) update_user_meta($user_id,'user_registration_telegram_account',$social_links['tg']);
+            if($social_links['tg']) update_user_meta($user_id,'user_registration_telegram_account',esc_url_raw($social_links['tg']));
 
             $result=true;
 
@@ -154,5 +159,8 @@ class IVD_Referrals {
         wp_die();
 
     }
+
+//
+//
 
 }
