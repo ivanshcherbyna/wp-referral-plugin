@@ -34,6 +34,24 @@ jQuery(document).ready(function ($) {
             else alert('Something is wrong...')
         });
     })
-
+    $('#save-social-accounts').on('click', function () {
+        social_inputs={
+            'fb':$('.social_link_facebook').val(),
+            'tw':$('.social_link_twitter').val(),
+            'tg':$('.social_link_telegram').val()
+        }
+        data_social = {
+            action: 'save_social_inputs',
+            links: social_inputs,
+            _user_id:id
+        };
+        console.log(social_inputs);
+        $.post(myajax.url, data_social, function (response) {
+            if(response.data==true) {
+                alert('IT\'S OK. SAVE.');
+            }
+            else alert('Something is wrong... please try again')
+        });
+    })
 
 })

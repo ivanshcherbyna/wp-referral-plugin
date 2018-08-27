@@ -1,18 +1,13 @@
 <?php
 /*
 
-Plugin Name: Referral system for users-IVD
-
+Plugin Name: Referral system for users-IVD_debug
 Description: Users can have units & to increase their
-
 Version: 1.0
-
 Author: Ivan Shcherbyna
-
 Text Domain: referr-system
-
 Domain Path: /languages
-
+Domain: ivd-referral
 License: GPLv3
 
 */

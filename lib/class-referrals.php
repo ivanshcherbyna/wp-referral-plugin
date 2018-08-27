@@ -138,7 +138,7 @@ class IVD_Referrals {
 
         if (isset($_POST['_user_id'])) {
 
-            $social_links = $_POST['links'];
+            $social_links = sanitize_text_field($_POST['links']);
 
             $user_id=sanitize_text_field ($_POST['_user_id']);
 

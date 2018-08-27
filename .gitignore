@@ -141,5 +141,6 @@ wp-content/plugins/hello.php
 /sitemap.xml.gz
 .idea/
 
+/IVD-Referral-system.zip
 
 # End of https://www.gitignore.io/api/intellij,phpstorm,wordpress
